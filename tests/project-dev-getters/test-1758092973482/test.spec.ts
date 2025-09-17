@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('無料で鑑定する', async ({ page }) => {
+test('無料鑑定テスト', async ({ page }) => {
   // テスト対象URL
   const targetUrl = 'https://development-getters-iida.marouge.dev/';
   

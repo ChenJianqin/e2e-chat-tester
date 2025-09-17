@@ -161,43 +161,45 @@ function ProjectTestsDisplay({
               <h3 className="text-lg font-semibold text-gray-800">
                 📋 {selectedProject} のテスト ({selectedProjectTests.length}件)
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="space-y-2">
                 {selectedProjectTests.map((savedTest) => (
-                  <div key={`${savedTest.projectId}-${savedTest.testId}`} className="border rounded-lg p-4 transition-all border-gray-200 hover:border-gray-300">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <h4 className="font-medium text-gray-800 mb-1">{savedTest.testName}</h4>
-                        <p className="text-sm text-gray-600 mb-1 truncate"><strong>URL:</strong> {savedTest.url}</p>
-                        <p className="text-sm text-gray-600 mb-2 line-clamp-2"><strong>テスト内容:</strong> {savedTest.prompt}</p>
-                        <p className="text-xs text-gray-500">
-                          作成: {new Date(savedTest.createdAt).toLocaleDateString('ja-JP')}
-                        </p>
-                        <div className="mt-2 flex gap-2 flex-wrap">
-                          <button
-                            onClick={() => loadSavedTest(savedTest)}
-                            className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
-                          >
-                            📝 読み込み
-                          </button>
-                          <button
-                            onClick={() => runSavedTest(savedTest)}
-                            className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors"
-                          >
-                            ▶️ 実行
-                          </button>
-                          <button
-                            onClick={() => editTestCode(savedTest)}
-                            className="bg-yellow-500 text-white px-3 py-1 rounded text-xs hover:bg-yellow-600 transition-colors"
-                          >
-                            ✏️ 編集
-                          </button>
-                          <button
-                            onClick={() => deleteSavedTest(savedTest)}
-                            className="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 transition-colors"
-                          >
-                            🗑️ 削除
-                          </button>
+                  <div key={`${savedTest.projectId}-${savedTest.testId}`} className="border rounded-lg p-3 transition-all border-gray-200 hover:border-gray-300 bg-white">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-4">
+                          <h4 className="font-medium text-gray-800 text-sm truncate min-w-0 flex-shrink-0" style={{minWidth: '120px'}}>{savedTest.testName}</h4>
+                          <p className="text-xs text-gray-600 truncate flex-1 min-w-0"><strong>URL:</strong> {savedTest.url}</p>
+                          <p className="text-xs text-gray-600 truncate flex-1 min-w-0"><strong>内容:</strong> {savedTest.prompt}</p>
+                          <p className="text-xs text-gray-500 flex-shrink-0" style={{minWidth: '80px'}}>
+                            {new Date(savedTest.createdAt).toLocaleDateString('ja-JP')}
+                          </p>
                         </div>
+                      </div>
+                      <div className="flex gap-1 ml-4 flex-shrink-0">
+                        <button
+                          onClick={() => loadSavedTest(savedTest)}
+                          className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
+                        >
+                          📝 読み込み
+                        </button>
+                        <button
+                          onClick={() => runSavedTest(savedTest)}
+                          className="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600 transition-colors"
+                        >
+                          ▶️ 実行
+                        </button>
+                        <button
+                          onClick={() => editTestCode(savedTest)}
+                          className="bg-yellow-500 text-white px-2 py-1 rounded text-xs hover:bg-yellow-600 transition-colors"
+                        >
+                          ✏️ 編集
+                        </button>
+                        <button
+                          onClick={() => deleteSavedTest(savedTest)}
+                          className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600 transition-colors"
+                        >
+                          🗑️ 削除
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -208,46 +210,48 @@ function ProjectTestsDisplay({
         }
         
         return (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="space-y-2">
             {savedTests.map((savedTest) => (
-              <div key={`${savedTest.projectId}-${savedTest.testId}`} className="border rounded-lg p-4 transition-all border-gray-200 hover:border-gray-300">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <h4 className="font-medium text-gray-800 mb-1">{savedTest.testName}</h4>
-                    <p className="text-sm text-gray-600 mb-1 truncate"><strong>URL:</strong> {savedTest.url}</p>
-                    <p className="text-sm text-gray-600 mb-2 line-clamp-2"><strong>テスト内容:</strong> {savedTest.prompt}</p>
-                    <p className="text-xs text-gray-500 mb-2">
-                      <strong>プロジェクト:</strong> {savedTest.projectId}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      作成: {new Date(savedTest.createdAt).toLocaleDateString('ja-JP')}
-                    </p>
-                    <div className="mt-2 flex gap-2 flex-wrap">
-                      <button
-                        onClick={() => loadSavedTest(savedTest)}
-                        className="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
-                      >
-                        📝 読み込み
-                      </button>
-                      <button
-                        onClick={() => runSavedTest(savedTest)}
-                        className="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 transition-colors"
-                      >
-                        ▶️ 実行
-                      </button>
-                      <button
-                        onClick={() => editTestCode(savedTest)}
-                        className="bg-yellow-500 text-white px-3 py-1 rounded text-xs hover:bg-yellow-600 transition-colors"
-                      >
-                        ✏️ 編集
-                      </button>
-                      <button
-                        onClick={() => deleteSavedTest(savedTest)}
-                        className="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600 transition-colors"
-                      >
-                        🗑️ 削除
-                      </button>
+              <div key={`${savedTest.projectId}-${savedTest.testId}`} className="border rounded-lg p-3 transition-all border-gray-200 hover:border-gray-300 bg-white">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-4">
+                      <h4 className="font-medium text-gray-800 text-sm truncate min-w-0 flex-shrink-0" style={{minWidth: '120px'}}>{savedTest.testName}</h4>
+                      <p className="text-xs text-gray-600 truncate flex-1 min-w-0"><strong>URL:</strong> {savedTest.url}</p>
+                      <p className="text-xs text-gray-600 truncate flex-1 min-w-0"><strong>内容:</strong> {savedTest.prompt}</p>
+                      <p className="text-xs text-gray-500 flex-shrink-0" style={{minWidth: '100px'}}>
+                        <strong>プロジェクト:</strong> {savedTest.projectId}
+                      </p>
+                      <p className="text-xs text-gray-500 flex-shrink-0" style={{minWidth: '80px'}}>
+                        {new Date(savedTest.createdAt).toLocaleDateString('ja-JP')}
+                      </p>
                     </div>
+                  </div>
+                  <div className="flex gap-1 ml-4 flex-shrink-0">
+                    <button
+                      onClick={() => loadSavedTest(savedTest)}
+                      className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
+                    >
+                      📝 読み込み
+                    </button>
+                    <button
+                      onClick={() => runSavedTest(savedTest)}
+                      className="bg-green-500 text-white px-2 py-1 rounded text-xs hover:bg-green-600 transition-colors"
+                    >
+                      ▶️ 実行
+                    </button>
+                    <button
+                      onClick={() => editTestCode(savedTest)}
+                      className="bg-yellow-500 text-white px-2 py-1 rounded text-xs hover:bg-yellow-600 transition-colors"
+                    >
+                      ✏️ 編集
+                    </button>
+                    <button
+                      onClick={() => deleteSavedTest(savedTest)}
+                      className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600 transition-colors"
+                    >
+                      🗑️ 削除
+                    </button>
                   </div>
                 </div>
               </div>
@@ -530,6 +534,12 @@ export default function Home() {
   const runSavedTest = async (savedTest: SavedTest) => {
     setLoading(true);
     setResult(null);
+
+    // フォームをクリア
+    setUrl('');
+    setPrompt('');
+    setTestCaseName('');
+    setSelectedTestCaseId('');
 
     // テスト実行中表示にスクロール
     setTimeout(() => {
