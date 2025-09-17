@@ -39,3 +39,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# E2Eテスト関連ファイル
+# 実行時に生成されるスクリーンショット
+/public/screenshots/*.png
+/public/screenshots/*.jpg
+/public/screenshots/*.jpeg
+
+# テスト実行時に生成される一時ファイル
+/tests/*/screenshots/*.png
+/tests/*/screenshots/*.jpg
+/tests/*/screenshots/*.jpeg
+
+# Playwright関連
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# ログファイル
+*.log
