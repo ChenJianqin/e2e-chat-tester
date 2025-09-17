@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🤖 対話型E2EテストWebアプリ
 
-## Getting Started
+ブラウザ上のUIで「URL」と「テスト内容（日本語）」を入力 → OpenAI に送信 → Playwright が自動実行 → 結果を画面表示
 
-First, run the development server:
+## ✨ 機能
+
+- 🌐 **URL入力**: テスト対象のWebサイトのURLを指定
+- 📝 **日本語テスト記述**: 自然言語でテスト内容を記述
+- 🤖 **AI自動テスト生成**: OpenAIがPlaywrightテストコードを自動生成
+- 🎭 **Playwright自動実行**: 生成されたテストを自動実行
+- 📸 **スクリーンショット**: テスト実行時の画面をキャプチャ
+- 📊 **詳細レポート**: ページ情報、エラーログ、生成コードを表示
+
+## 🚀 セットアップ
+
+### 1. 依存関係のインストール
+
+```bash
+npm install
+```
+
+### 2. 環境変数の設定
+
+`.env.local` ファイルを作成し、OpenAI APIキーを設定してください：
+
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+```
+
+### 3. 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) でアプリケーションにアクセスできます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📖 使用方法
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **URL入力**: テストしたいWebサイトのURLを入力
+2. **テスト内容記述**: 日本語でテストしたい内容を記述
+   - 例：「トップページでヘッダーが正しく表示されているか確認」
+   - 例：「ログインボタンがクリックできるかテスト」
+   - 例：「フォームのバリデーションが正常に動作するか確認」
+3. **実行**: 「🚀 テストを実行」ボタンをクリック
+4. **結果確認**: スクリーンショット、詳細情報、生成されたコードを確認
 
-## Learn More
+## 🛠️ 技術スタック
 
-To learn more about Next.js, take a look at the following resources:
+- **フロントエンド**: Next.js 15, React 19, TypeScript, Tailwind CSS
+- **バックエンド**: Next.js API Routes
+- **AI**: OpenAI GPT-4o
+- **E2Eテスト**: Playwright
+- **リンター**: Biome
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 プロジェクト構造
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── api/
+│   │   └── run-test/
+│   │       └── route.ts      # APIエンドポイント
+│   ├── page.tsx              # メインページ
+│   └── layout.tsx            # レイアウト
+```
 
-## Deploy on Vercel
+## 🔧 開発
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### リンター実行
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+```
+
+### フォーマット
+
+```bash
+npm run format
+```
+
+## 🚀 デプロイ
+
+Vercelでのデプロイが推奨されます：
+
+1. GitHubリポジトリにプッシュ
+2. Vercelでプロジェクトをインポート
+3. 環境変数 `OPENAI_API_KEY` を設定
+4. デプロイ完了
+
+## ⚠️ 注意事項
+
+- OpenAI APIキーが必要です
+- テスト実行には時間がかかる場合があります
+- 大量のリクエストはAPI制限に注意してください
